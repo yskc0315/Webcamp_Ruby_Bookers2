@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2Ver2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="d-flex bg-dark" style="height:56px">
+      <nav class="container">
+        <% if user_signed_in? %>
+          <div class="row" style="height:56px">
+            <div class="col-lg-2 d-flex justify-content-center align-items-center h5" style="height:56px">
+                <%= link_to 'Bookers', root_path, class:'text-white text-decoration-none' %>
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-lg-4 d-flex align-items-center" style="height:56px">
+              <ul class="list-unstyled d-flex h6" style="margin:0px">
+                <li style="margin-right:10px">
+                  <%= link_to user_path(current_user.id) do %>
+                    <i class="fas fa-home text-white"> Home</i>
+                  <% end %>
+                </li>
+                <li style="margin-right:10px">
+                  <%= link_to users_path do %>
+                    <i class="fas fa-users text-white"> Users</i>
+                  <% end %>
+                </li>
+                <li style="margin-right:10px">
+                  <%= link_to books_path do %>
+                    <i class="fas fa-book-open text-white"> Books</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fas fa-sign-out-alt text-white"> logout</i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+        　</div>
+        <% else %>
+          <div class="row" style="height:56px">
+            <div class="col-lg-2 d-flex justify-content-center align-items-center h5" style="height:56px">
+              <%= link_to 'Bookers', root_path, class:'text-white text-decoration-none' %>
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-lg-4 d-flex align-items-center" style="height:56px">
+              <ul class="list-unstyled d-flex h6" style="margin:0px">
+                <li style="margin-right:10px">
+                  <%= link_to root_path do %>
+                    <i class="fas fa-home text-white"> Home</i>
+                  <% end %>
+                </li>
+                <li style="margin-right:10px">
+                  <%= link_to home_about_path do %>
+                    <i class="fas fa-link text-white"> About</i>
+                  <% end %>
+                </li>
+                <li style="margin-right:10px">
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fas fa-user-plus text-white"> sign up</i>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <i class="fas fa-sign-in-alt text-white"> login</i>
+                  <% end %>
+                </li>
+              </ul>
+          </div>
+        <% end %>
+      </nav>
+    </header>
+    <p class="notice text-success" style="height:0px"><%= notice %></p>
+    <p class="alert text-danger" style="padding:0px"><%= alert %></p>
+    <%= yield %>
+    <footer class="text-center" style="margin-top:40px">
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+  </body>
+</html>

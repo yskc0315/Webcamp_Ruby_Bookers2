@@ -1,0 +1,27 @@
+<% if @user.errors.any? %>
+    <h3 class="error-message, text-danger"><%= pluralize(@user.errors.count, "error") %> prohibited this obj from being saved:</h3>
+    	<ul>
+    		<% @user.errors.full_messages.each do |message| %>
+    		<li class="text-danger"><%= message %></li>
+    		<% end %>
+    	</ul>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<h1>User info</h1>
+			<%= form_with model:@user, local:true do |f| %>
+			<p>Name</p>
+			<p><%= f.text_field :name %></p>
+			<p>Image</p>
+			<p><%= f.attachment_field :profile_image %></p>
+			<p>Introduction</p>
+			<p><%= f.text_area :introduction %></p>
+			<p><%= f.submit 'Update User', class:"btn btn-success" %></p>
+			<% end %>
+		</div>
+		<div class="col-lg-4"></div>
+	</div>
+</div>
