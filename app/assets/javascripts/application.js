@@ -17,3 +17,12 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$('.heart').mouseover(function(){
+		$(this).css('color','blue');
+	});
+	$('.heart').mouseout(function(){
+		$(this).css('color','red');
+	});
+});

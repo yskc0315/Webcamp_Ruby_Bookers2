@@ -8,5 +8,11 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 50 }
 
   has_many :books, dependent: :destroy
+  has_many :favorites
+  has_many :book_comments
   attachment :profile_image
+
+  def favorited_by?(user_id)
+        favorites.where(user_id: user_id).exists?
+  end
 end

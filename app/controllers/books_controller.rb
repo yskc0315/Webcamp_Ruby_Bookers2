@@ -8,22 +8,23 @@ class BooksController < ApplicationController
 			@books = Book.all
 			@user = User.find(current_user.id)
 			@booker = Book.new
-			# flash[:danger] = @book.errors.full_messages
 			render :index
 		end
 	end
 
 	def show
-		@book = Book.find(params[:id])
-		@user = User.find(@book.user_id)
+	  @book = Book.find(params[:id])
 	  @booker = Book.new
+   　  @user = User.find(@book.user_id)
+	  @post_comment = BookComment.new
+	  @comments = BookComment.where(book_id:params[:id])
 	end
 
 	def index
-		@book = Book.new
-	    @books = Book.all
-	    @user = User.find(current_user.id)
-	    @booker = Book.new
+	  @book = Book.new
+	  @books = Book.all
+	  @user = User.find(current_user.id)
+	  @booker = Book.new
 	end
 
 	def edit
