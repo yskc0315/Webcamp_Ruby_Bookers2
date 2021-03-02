@@ -11,6 +11,14 @@
             <th scope="col">introduction</th>
             <th scope="col"><%= user.introduction %></th>
         </tr>
+        <tr>
+            <th scope="col">follows</th>
+            <th scope="col"><%= user.followers.count %></th>
+        </tr>
+        <tr>
+            <th scope="col">followers</th>
+            <th scope="col"><%= user.followeds.count %></th>
+        </tr>
         </tbody>
     </table>
     <div>
