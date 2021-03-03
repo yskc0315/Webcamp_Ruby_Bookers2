@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @book = Book.new
     @users = User.all
+    @users = @users.where('name LIKE?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def edit

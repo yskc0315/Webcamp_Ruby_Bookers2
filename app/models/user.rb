@@ -27,4 +27,16 @@ class User < ApplicationRecord
     passive_relationships.find_by(follower_id: user.id).present?
   end
 
+  def self.looks(words, searches)
+    if searches == "perfect_match"
+      @user = User.where("name LIKE?", "#{words}")
+    elsif searches == "partial_match"
+      @user = User.where("name LIKE?", "%#{words}%")
+    elsif searches == "forward_match"
+      @user = User.where("name LIKE?", "#{words}%")
+    else
+      @book = User.where("name LIKE?", "%#{words}")
+    end
+  end
+
 end
