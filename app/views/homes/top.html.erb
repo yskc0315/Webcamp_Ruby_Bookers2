@@ -10,7 +10,7 @@
 		  </p>
 			<div class="d-grid gap-2 col-10 mx-auto">
 				<%= link_to 'Log in', new_user_session_path, class:"btn btn-info btn-sm btn-block", type:"button" %>
-				<%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-success btn-sm btn-block", type:"button" %>
+				<%= link_to 'Sign Up', new_user_registration_path, class:"btn btn-success btn-sm btn-block", type:"button", data: {"turbolinks" => false} %>
 			</div>
 		</div>
 		<div class="col-md-3"></div>
