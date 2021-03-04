@@ -1,0 +1,5 @@
+$('.book_<%= @book.id %>').html("<%= j(render 'books/books', book: @book) %>")
+
+$('.booker_<%= @book.id %>').html("<%= j(render 'books/book', user: @user , book: @book) %>")
+
+$('.userBook_<%= @book.id %>').html("<%= j(render 'users/book', user: @user, book: @book) %>")
