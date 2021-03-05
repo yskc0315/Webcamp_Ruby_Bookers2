@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
             :email,
             :name,
             :postcode,
-            :prefecture_name,
+            :prefecture_code,
             :address_city,
             :address_street
         ])

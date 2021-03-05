@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :send_thanks_mail
+
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
 
@@ -45,6 +47,10 @@ class User < ApplicationRecord
 
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  def send_thanks_mail
+    NotificationMailer.thanks_mail(self).deliver
   end
 
 end

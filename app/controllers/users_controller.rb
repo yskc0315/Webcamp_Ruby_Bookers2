@@ -40,6 +40,16 @@ class UsersController < ApplicationController
     @users = users.followeds
   end
 
+  def create
+    @user = User.find(params[:id])
+    if @user.save
+      NotificationMailer.thanks_mail(@user).deliver
+      render 'homes/about'
+    else
+      render 'homes/top'
+    end
+  end
+
   private
 
   def users_params
