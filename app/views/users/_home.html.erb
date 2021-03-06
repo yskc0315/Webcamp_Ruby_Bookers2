@@ -29,6 +29,9 @@
         </tr>
         </tbody>
     </table>
+    <% if current_user != user %>
+        <%= link_to 'チャットする', chat_path(user.id) %>
+    <% end %>
     <% if user == current_user %>
         <div>
             <%= link_to edit_user_path(user.id) do %>

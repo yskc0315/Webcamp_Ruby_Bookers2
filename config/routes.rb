@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
   get 'search' => 'searches#search'
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   resources :users, only: [:show, :index, :edit, :update] do
     resources :relationships, only: [:create, :destroy]
